@@ -1,0 +1,86 @@
+{
+  "name": "turbo-vscode",
+  "displayName": "One-Click Turbo",
+  "description": "VS Code performance health scanner and optimization guide.",
+  "version": "0.1.0",
+  "publisher": "Evhye",
+  "license": "MIT",
+  "private": true,
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "main": "./out/src/extension.js",
+  "extensionKind": [
+    "ui",
+    "workspace"
+  ],
+  "activationEvents": [
+    "onCommand:turbo.runFullScan",
+    "onCommand:turbo.showDashboard",
+    "onCommand:turbo.quickAudit",
+    "onCommand:turbo.exportReport",
+    "onCommand:turbo.applySafeFixes",
+    "onCommand:turbo.undoLastFix",
+    "onCommand:turbo.purge"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "turbo.runFullScan",
+        "title": "Turbo: Run Full Scan",
+        "category": "Turbo"
+      },
+      {
+        "command": "turbo.showDashboard",
+        "title": "Turbo: Show Dashboard",
+        "category": "Turbo"
+      },
+      {
+        "command": "turbo.quickAudit",
+        "title": "Turbo: Quick Extension Audit",
+        "category": "Turbo"
+      },
+      {
+        "command": "turbo.exportReport",
+        "title": "Turbo: Export Report (Markdown)",
+        "category": "Turbo"
+      },
+      {
+        "command": "turbo.applySafeFixes",
+        "title": "Turbo: Apply All Safe Fixes",
+        "category": "Turbo"
+      },
+      {
+        "command": "turbo.undoLastFix",
+        "title": "Turbo: Undo Last Fix",
+        "category": "Turbo"
+      },
+      {
+        "command": "turbo.purge",
+        "title": "Turbo: Purge & Prepare for Uninstall",
+        "category": "Turbo"
+      }
+    ]
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "tsc --noEmit -p ./",
+    "test": "npm run test:unit",
+    "test:unit": "npm run compile && node --test \"out/test/unit/*.test.js\"",
+    "test:vscode": "npm run compile && node ./out/test/vscode/runTest.js",
+    "package": "npm run compile"
+  },
+  "dependencies": {
+    "jsonc-parser": "^3.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.0",
+    "@types/vscode": "^1.90.0",
+    "@vscode/test-electron": "^2.5.2",
+    "typescript": "^5.9.3"
+  }
+}
