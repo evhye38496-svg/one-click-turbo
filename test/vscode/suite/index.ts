@@ -14,6 +14,7 @@ export async function run(): Promise<void> {
   assert.ok(commands.includes('turbo.applySafeFixes'), 'turbo.applySafeFixes should be registered');
   assert.ok(commands.includes('turbo.undoLastFix'), 'turbo.undoLastFix should be registered');
 
+  await vscode.commands.executeCommand('turbo.showDashboard');
   await vscode.commands.executeCommand('turbo.runFullScan');
   await vscode.commands.executeCommand('turbo.quickAudit');
   await vscode.commands.executeCommand('turbo.undoLastFix');

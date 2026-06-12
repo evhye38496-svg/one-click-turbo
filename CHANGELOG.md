@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.4.0
+
+- Added Dashboard command buttons for scan, audit, safe fixes, and undo.
+- Added allowlisted Webview message dispatch for Turbo commands.
+- Enhanced Status Bar states for scan, audit, fix, undo, score, and error.
+- Added gentle notification summaries for scan, audit, fix, rollback, and errors.
+
 ## 0.3.0
 
 - Added Workspace safe fixes for `files.watcherExclude`, `search.exclude`, and `search.followSymlinks`.

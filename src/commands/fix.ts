@@ -4,6 +4,14 @@ import { createWorkspaceFixProposals, type WorkspaceConfigValues } from '../fix/
 import { loadWorkspaceChangeLog } from '../fix/change-log-manager';
 import { applyWorkspaceFixes } from '../fix/settings-writer';
 import { rollbackWorkspaceChangeLog } from '../fix/rollback';
+import { TurboNotifier } from '../ui/notifications';
+import { TurboStatusBar } from '../ui/status-bar';
+
+export interface FixCommandDependencies {
+  context: vscode.ExtensionContext;
+  notifier: TurboNotifier;
+  statusBar: TurboStatusBar;
+}
 
 function inspectWorkspaceValue<T>(key: string): T | undefined {
   return vscode.workspace.getConfiguration().inspect<T>(key)?.workspaceValue;
@@ -27,11 +35,12 @@ function toPreviewItem(proposal: FixProposal): FixPreviewItem {
   };
 }
 
-export async function applySafeFixesCommand(context: vscode.ExtensionContext): Promise<void> {
+export async function applySafeFixesCommand(deps: FixCommandDependencies): Promise<void> {
   const proposals = createWorkspaceFixProposals(readWorkspaceConfigValues());
 
   if (proposals.length === 0) {
-    void vscode.window.showInformationMessage('Turbo: No workspace safe fixes are available.');
+    deps.statusBar.setIdle();
+    deps.notifier.showNoFixes();
     return;
   }
 
@@ -42,29 +51,42 @@ export async function applySafeFixesCommand(context: vscode.ExtensionContext): P
   });
 
   if (!selected || selected.length === 0) {
+    deps.statusBar.setIdle();
     return;
   }
 
-  const result = await applyWorkspaceFixes(
-    context,
-    selected.map((item) => item.proposal)
-  );
+  deps.statusBar.setFixing();
 
-  void vscode.window.showInformationMessage(
-    `Turbo Fix complete - applied ${result.applied}, skipped ${result.skipped}, failed ${result.failed}. Run Turbo Scan again to refresh the report.`
-  );
+  try {
+    const result = await applyWorkspaceFixes(
+      deps.context,
+      selected.map((item) => item.proposal)
+    );
+    deps.statusBar.setIdle();
+    deps.notifier.showFixComplete(result);
+  } catch (error) {
+    deps.statusBar.setError('Fix failed');
+    deps.notifier.showError('fix', error);
+  }
 }
 
-export async function undoLastFixCommand(context: vscode.ExtensionContext): Promise<void> {
-  const changeLog = loadWorkspaceChangeLog(context);
+export async function undoLastFixCommand(deps: FixCommandDependencies): Promise<void> {
+  const changeLog = loadWorkspaceChangeLog(deps.context);
 
   if (!changeLog) {
-    void vscode.window.showInformationMessage('Turbo: No workspace fix Change Log found.');
+    deps.statusBar.setIdle();
+    deps.notifier.showNoChangeLog();
     return;
   }
 
-  const result = await rollbackWorkspaceChangeLog(context, changeLog);
-  void vscode.window.showInformationMessage(
-    `Turbo Undo complete - restored ${result.restored}, skipped ${result.skipped}, failed ${result.failed}.`
-  );
+  deps.statusBar.setUndoing();
+
+  try {
+    const result = await rollbackWorkspaceChangeLog(deps.context, changeLog);
+    deps.statusBar.setIdle();
+    deps.notifier.showRollbackComplete(result);
+  } catch (error) {
+    deps.statusBar.setError('Undo failed');
+    deps.notifier.showError('undo', error);
+  }
 }
