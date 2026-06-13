@@ -1,6 +1,6 @@
 {
   "name": "one-click-turbo",
-  "displayName": "One-Click Turbo",
+  "displayName": "One-Click Turbo Health",
   "description": "VS Code performance health scanner and optimization guide - analyze extensions, find slowdown causes, and apply safe workspace fixes with one click.",
   "version": "1.0.0",
   "publisher": "Evhye",
