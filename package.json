@@ -8,12 +8,12 @@
   "icon": "resources/turbo-128.png",
   "repository": {
     "type": "git",
-    "url": "https://example.com/replace-with-one-click-turbo-repository.git"
+    "url": "https://github.com/evhye38496-svg/one-click-turbo.git"
   },
   "bugs": {
-    "url": "https://example.com/replace-with-one-click-turbo-issues"
+    "url": "https://github.com/evhye38496-svg/one-click-turbo/issues"
   },
-  "homepage": "https://example.com/replace-with-one-click-turbo-homepage",
+  "homepage": "https://github.com/evhye38496-svg/one-click-turbo#readme",
   "keywords": [
     "performance",
     "optimization",

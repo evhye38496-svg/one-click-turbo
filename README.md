@@ -21,7 +21,7 @@ Turbo helps you:
 
 ## V1.0
 
-V1.0 is the first Marketplace-ready release line. Publisher `Evhye` is configured, but the placeholder `repository`, `bugs`, and `homepage` URLs in `package.json` must be replaced before public Marketplace publishing. `npm run verify:release` intentionally fails while those placeholders remain.
+V1.0 is the first Marketplace release line, published under `Evhye`.
 
 ## Features
 
@@ -102,12 +102,11 @@ dist/turbo-vscode-1.0.0.vsix
 
 ## Release Checklist
 
-- Replace `repository`, `bugs`, and `homepage` placeholder URLs in `package.json`.
 - Run `npm run compile`.
 - Run `npm test`.
 - Run `npm run test:vscode`.
+- Run `npm run verify:release`.
 - Run `npm run package:vsix`.
-- Run `npm run verify:release` after real URLs are in place.
 - Install the VSIX into a clean VS Code profile.
 - Confirm the Activity Bar entry appears.
 - Run Full Scan and Quick Audit.

@@ -179,6 +179,13 @@ export function renderWebviewStyles(surface: 'dashboard' | 'sidebar'): string {
     .warning { border-left: 4px solid var(--vscode-editorWarning-foreground); }
     .info { border-left: 4px solid var(--vscode-editorInfo-foreground); }
     .muted, .empty { color: var(--turbo-muted); }
+    .footer-section {
+      margin-top: var(--turbo-gap);
+      padding-top: var(--turbo-gap);
+      border-top: 1px solid var(--turbo-border);
+      text-align: center;
+    }
+    .footer-section a { color: var(--turbo-accent); }
 
     @keyframes turbo-enter {
       from { opacity: 0; transform: translateY(4px); }

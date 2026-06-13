@@ -66,6 +66,10 @@ function renderReleaseBadges(): string {
   return '<div class="tag-row"><span class="tag">V1.0</span><span class="tag">Offline</span><span class="tag">Preview-before-write</span></div>';
 }
 
+function renderFooter(): string {
+  return '<footer class="footer-section"><p>One-Click Turbo V1.0 · <a href="https://github.com/evhye38496-svg/one-click-turbo/issues">Report Issue</a> · <a href="https://marketplace.visualstudio.com/items?itemName=Evhye.turbo-vscode&ssr=false#review-details">Write a Review</a></p></footer>';
+}
+
 function renderEmptyState(operation?: TurboOperationSummary): string {
   return `<section class="launcher-shell">
   <header class="hero-grid">
@@ -87,6 +91,7 @@ function renderEmptyState(operation?: TurboOperationSummary): string {
     <article class="panel-card"><h2>Fix</h2><p>Preview workspace safe fixes before any setting is written.</p></article>
   </section>
   ${renderOperation(operation)}
+	  ${renderFooter()}
 </section>`;
 }
 
@@ -123,6 +128,7 @@ function renderResult(result: ScanResult, viewMode: DashboardViewMode, operation
   ${viewMode === 'audit' ? audit : ''}
   ${renderIssues(result)}
   ${viewMode === 'scan' ? audit : ''}
+  ${renderFooter()}
 </section>`;
 }
 

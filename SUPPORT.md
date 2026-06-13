@@ -1,6 +1,6 @@
 # Support
 
-One-Click Turbo V1.0 is an offline VS Code performance health scanner and optimization guide. Replace the placeholder support links in `package.json` before public Marketplace publishing.
+One-Click Turbo V1.0 is an offline VS Code performance health scanner and optimization guide.
 
 ## Before Reporting an Issue
 
