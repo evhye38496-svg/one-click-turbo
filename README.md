@@ -5,6 +5,10 @@
 [![Marketplace](https://img.shields.io/badge/Marketplace-v1.0-blue)](https://marketplace.visualstudio.com/items?itemName=Evhye.turbo-vscode)
 [![Installs](https://img.shields.io/visual-studio-marketplace/i/Evhye.turbo-vscode?label=installs&color=green)](https://marketplace.visualstudio.com/items?itemName=Evhye.turbo-vscode)
 
+**Install:** [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=Evhye.turbo-vscode) · **Source:** [GitHub](https://github.com/evhye38496-svg/one-click-turbo) · **Feedback:** [Report an issue](https://github.com/evhye38496-svg/one-click-turbo/issues)
+
+![One-Click Turbo Dashboard](https://raw.githubusercontent.com/evhye38496-svg/one-click-turbo/main/docs/assets/turbo-score-dashboard.png)
+
 ## Why Do You Need It?
 
 After installing too many VS Code extensions, startup can slow down, saving can stutter, and search can feel sluggish.
@@ -19,9 +23,18 @@ Turbo helps you:
 - 📄 **Export Markdown reports** for team sharing
 - 🔒 **Stay fully offline** with no data uploads
 
+One-Click Turbo is for developers who have installed many VS Code extensions and want a local, preview-first way to understand what might be slowing their workspace down.
+
 ## V1.0
 
 V1.0 is the first Marketplace release line, published under `Evhye`.
+
+## Community
+
+- [Contributing guide](https://github.com/evhye38496-svg/one-click-turbo/blob/main/CONTRIBUTING.md)
+- [Support and safety policy](https://github.com/evhye38496-svg/one-click-turbo/blob/main/SUPPORT.md)
+- [Growth playbook](https://github.com/evhye38496-svg/one-click-turbo/blob/main/docs/GROWTH_PLAYBOOK.md)
+- [Content templates](https://github.com/evhye38496-svg/one-click-turbo/blob/main/docs/CONTENT_TEMPLATES.md)
 
 ## Features
 
@@ -37,6 +50,26 @@ V1.0 is the first Marketplace release line, published under `Evhye`.
 - Multi-root safe fixes using Workspace Folder scope
 - Workspace Change Log rollback for Turbo-written settings
 - Safe purge for Turbo-owned saved state
+
+## Screenshots
+
+### Turbo Score Dashboard
+
+Run a full scan to review your VS Code performance health score, extension inventory, activation signals, workspace configuration hints, and environment stats.
+
+![Turbo Score Dashboard](https://raw.githubusercontent.com/evhye38496-svg/one-click-turbo/main/docs/assets/turbo-score-dashboard.png)
+
+### Quick Extension Audit
+
+Use Quick Audit when you want an extension-focused review without workspace configuration and environment checks.
+
+![Quick Extension Audit](https://raw.githubusercontent.com/evhye38496-svg/one-click-turbo/main/docs/assets/quick-extension-audit.png)
+
+### Markdown Report Export
+
+Export the latest scan as a Markdown report for team review, issue reports, or performance cleanup notes.
+
+![Markdown Report Export](https://raw.githubusercontent.com/evhye38496-svg/one-click-turbo/main/docs/assets/markdown-report-export.png)
 
 ## Safety Boundaries
 

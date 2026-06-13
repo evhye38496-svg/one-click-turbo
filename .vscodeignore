@@ -3,6 +3,7 @@
 .vscode/**
 .vscode-test/**
 dist/**
+docs/**
 scripts/**
 src/**
 test/**
@@ -13,3 +14,4 @@ tsconfig.json
 package-lock.json
 npm-debug.log*
 one-click-turbo-prd.md
+turbo-report-*.md

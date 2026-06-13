@@ -1,0 +1,33 @@
+name: Feature request
+description: Suggest an improvement or new capability.
+title: "[Feature]: "
+labels:
+  - enhancement
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What user problem should this solve?
+      placeholder: "When VS Code feels slow, I want to..."
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed solution
+      description: Describe the behavior you want.
+    validations:
+      required: true
+  - type: checkboxes
+    id: boundaries
+    attributes:
+      label: Safety boundaries
+      options:
+        - label: This does not require telemetry or uploading user data.
+        - label: This does not require disabling or uninstalling extensions automatically.
+        - label: This does not require writing User settings.
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered

@@ -19,7 +19,7 @@ export interface ReleaseGuardResult {
 }
 
 const REQUIRED_FILES = ['README.md', 'CHANGELOG.md', 'LICENSE', 'SUPPORT.md', 'resources/turbo-128.png'];
-const REQUIRED_IGNORES = ['src/**', 'test/**', 'out/test/**', '.vscode-test/**', 'one-click-turbo-prd.md', '**/*.map'];
+const REQUIRED_IGNORES = ['src/**', 'test/**', 'out/test/**', '.vscode-test/**', 'one-click-turbo-prd.md', 'turbo-report-*.md', '**/*.map'];
 const PLACEHOLDER = 'example.com/replace-with';
 
 export function validateRelease(input: ReleaseGuardInput): ReleaseGuardResult {

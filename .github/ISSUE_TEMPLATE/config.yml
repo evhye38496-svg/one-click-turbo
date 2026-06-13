@@ -1,8 +1,8 @@
 blank_issues_enabled: true
 contact_links:
-  - name: Questions & Discussions
-    url: https://github.com/evhye38496-svg/one-click-turbo/discussions
-    about: Ask questions or share ideas in Discussions
   - name: VS Code Marketplace
     url: https://marketplace.visualstudio.com/items?itemName=Evhye.turbo-vscode
-    about: View Turbo on the VS Code Marketplace
+    about: Install or review One-Click Turbo on the VS Code Marketplace.
+  - name: Security and support policy
+    url: https://github.com/evhye38496-svg/one-click-turbo/blob/main/SUPPORT.md
+    about: Read the support scope, safety boundaries, and diagnostic guidance.

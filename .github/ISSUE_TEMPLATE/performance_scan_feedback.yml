@@ -1,0 +1,42 @@
+name: Performance scan feedback
+description: Share a Turbo report or feedback about scan results.
+title: "[Scan feedback]: "
+labels:
+  - feedback
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use this when One-Click Turbo produced a confusing score, issue, audit hint, or safe fix suggestion. Please remove private data before sharing.
+  - type: input
+    id: score
+    attributes:
+      label: Turbo Score
+      placeholder: "86"
+  - type: input
+    id: extensions
+    attributes:
+      label: Number of extensions scanned
+      placeholder: "42"
+  - type: dropdown
+    id: scan_type
+    attributes:
+      label: Scan type
+      options:
+        - Full Scan
+        - Quick Audit
+        - Exported Markdown Report
+    validations:
+      required: true
+  - type: textarea
+    id: confusing_result
+    attributes:
+      label: What looked wrong or confusing?
+      placeholder: "The score looked too high/low because..."
+    validations:
+      required: true
+  - type: textarea
+    id: report_excerpt
+    attributes:
+      label: Safe report excerpt
+      description: Paste only the relevant section after removing private workspace details.

@@ -10,7 +10,8 @@ const vscodeignore = [
   'out/test/**',
   'out/src/release/**',
   '**/*.map',
-  'one-click-turbo-prd.md'
+  'one-click-turbo-prd.md',
+  'turbo-report-*.md'
 ].join('\n');
 
 const files = ['README.md', 'CHANGELOG.md', 'LICENSE', 'SUPPORT.md', 'resources/turbo-128.png'];
