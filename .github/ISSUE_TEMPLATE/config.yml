@@ -1,8 +1,8 @@
 blank_issues_enabled: true
 contact_links:
   - name: VS Code Marketplace
-    url: https://marketplace.visualstudio.com/items?itemName=Evhye.one-click-turbo
-    about: Install or review One-Click Turbo on the VS Code Marketplace.
+    url: https://marketplace.visualstudio.com/items?itemName=Evhye.perfscope
+    about: Install or review PerfScope on the VS Code Marketplace.
   - name: Security and support policy
-    url: https://github.com/evhye38496-svg/one-click-turbo/blob/main/SUPPORT.md
+    url: https://github.com/evhye38496-svg/PerfScope/blob/main/SUPPORT.md
     about: Read the support scope, safety boundaries, and diagnostic guidance.

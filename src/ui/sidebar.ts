@@ -1,17 +1,17 @@
 import * as vscode from 'vscode';
-import type { TurboUiState } from '../state/turbo-state';
+import type { PerfScopeUiState } from '../state/perfscope-state';
 import { createCspNonce } from '../utils/csp-nonce';
 import { resolveDashboardCommand } from './dashboard-messages';
 import { renderSidebarHtml } from './sidebar-renderer';
-import { executeTurboCommand } from './turbo-command-dispatch';
+import { executePerfScopeCommand } from './perfscope-command-dispatch';
 
-export class TurboSidebarProvider implements vscode.WebviewViewProvider {
+export class PerfScopeSidebarProvider implements vscode.WebviewViewProvider {
   private view: vscode.WebviewView | undefined;
-  private state: TurboUiState = {};
+  private state: PerfScopeUiState = {};
 
   constructor(
     private readonly extensionUri: vscode.Uri,
-    private readonly getState: () => TurboUiState
+    private readonly getState: () => PerfScopeUiState
   ) {}
 
   resolveWebviewView(webviewView: vscode.WebviewView): void {
@@ -25,14 +25,14 @@ export class TurboSidebarProvider implements vscode.WebviewViewProvider {
     webviewView.webview.onDidReceiveMessage((message) => {
       const command = resolveDashboardCommand(message);
       if (command) {
-        executeTurboCommand(command, 'sidebar');
+        executePerfScopeCommand(command, 'sidebar');
       }
     });
 
     this.render();
   }
 
-  update(state: TurboUiState): void {
+  update(state: PerfScopeUiState): void {
     this.state = state;
     this.render();
   }

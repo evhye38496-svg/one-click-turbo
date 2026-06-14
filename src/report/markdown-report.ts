@@ -14,16 +14,16 @@ const categoryLabels: Record<ExtensionCategory, string> = {
 
 export function createMarkdownReport(result: ScanResult, changeLog?: ChangeLog): string {
   return [
-    '# One-Click Turbo Report',
+    '# PerfScope Report',
     '',
-    'Release: One-Click Turbo 1.0.0',
+    'Release: PerfScope 1.0.0',
     '',
     `Generated: ${text(result.generatedAt)}`,
     `Scan Type: ${result.kind === 'quick-audit' ? 'Quick Extension Audit' : 'Full Scan'}`,
     '',
     '## Summary',
     '',
-    `- Turbo Score: ${result.score}`,
+    `- PerfScope Score: ${result.score}`,
     `- Grade: ${text(result.grade)}`,
     `- Issues: ${result.issues.length}`,
     `- Extensions: ${result.stats.totalExtensions}`,
@@ -79,7 +79,7 @@ export function createMarkdownReport(result: ScanResult, changeLog?: ChangeLog):
     '',
     '## Purge Behavior',
     '',
-    'Turbo purge clears only Turbo-owned saved state and recent UI report data. It does not modify Workspace settings, uninstall extensions, or delete files.',
+    'PerfScope purge clears only PerfScope-owned saved state and recent UI report data. It does not modify Workspace settings, uninstall extensions, or delete files.',
     '',
     '## Scope Notes',
     '',
@@ -95,7 +95,7 @@ export function createDefaultReportFileName(date = new Date()): string {
     pad(date.getMonth() + 1),
     pad(date.getDate())
   ].join('-');
-  return `turbo-report-${stamp}-${pad(date.getHours())}${pad(date.getMinutes())}.md`;
+  return `perfscope-report-${stamp}-${pad(date.getHours())}${pad(date.getMinutes())}.md`;
 }
 
 export function markdownCell(value: unknown): string {
@@ -170,13 +170,13 @@ function renderRedundancyHints(result: ScanResult): string {
 
 function renderChangeLog(changeLog: ChangeLog | undefined): string {
   if (!changeLog || changeLog.entries.length === 0) {
-    return 'No Turbo workspace fixes are currently recorded for undo. If the latest Apply Safe Fixes run wrote nothing, no new Change Log was created.';
+    return 'No PerfScope workspace fixes are currently recorded for undo. If the latest Apply Safe Fixes run wrote nothing, no new Change Log was created.';
   }
 
   return [
     `Last successful workspace write Change Log: ${text(new Date(changeLog.timestamp).toISOString())}`,
     '',
-    'This undo record belongs to the latest Turbo run that actually wrote Workspace settings. A later skipped or canceled fix run does not replace it.',
+    'This undo record belongs to the latest PerfScope run that actually wrote Workspace settings. A later skipped or canceled fix run does not replace it.',
     '',
     '| Key | Target | Folder | Existed Before |',
     '| --- | --- | --- | --- |',

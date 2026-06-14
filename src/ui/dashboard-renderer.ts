@@ -1,6 +1,6 @@
 import type { ExtensionCategory, ScanResult } from '../types';
 import { escapeHtml } from '../utils/html-escape';
-import type { TurboOperationSummary } from '../state/turbo-state';
+import type { PerfScopeOperationSummary } from '../state/perfscope-state';
 import { renderWebviewStyles } from './webview-styles';
 
 export type DashboardViewMode = 'scan' | 'audit';
@@ -21,7 +21,7 @@ export function renderDashboardHtml(params: {
   cspSource: string;
   nonce: string;
   result?: ScanResult;
-  operation?: TurboOperationSummary;
+  operation?: PerfScopeOperationSummary;
   viewMode: DashboardViewMode;
 }): string {
   const content = params.result ? renderResult(params.result, params.viewMode, params.operation) : renderEmptyState(params.operation);
@@ -32,7 +32,7 @@ export function renderDashboardHtml(params: {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'nonce-${params.nonce}' ${params.cspSource}; script-src 'nonce-${params.nonce}' ${params.cspSource}; img-src ${params.cspSource} data:; font-src ${params.cspSource}; connect-src 'none';">
-  <title>One-Click Turbo</title>
+  <title>PerfScope</title>
   <style nonce="${params.nonce}">
     ${renderWebviewStyles('dashboard')}
     .score-meter-fill { width: ${params.result ? clampScore(params.result.score) : 0}%; }
@@ -53,7 +53,7 @@ export function renderDashboardHtml(params: {
 }
 
 function renderToolbar(): string {
-  return `<nav class="toolbar launcher-actions" aria-label="Turbo commands">
+  return `<nav class="toolbar launcher-actions" aria-label="PerfScope commands">
   <button class="action-button primary-action" type="button" data-command="runFullScan">Run Full Scan</button>
   <button class="action-button secondary" type="button" data-command="quickAudit">Quick Audit</button>
   <button class="action-button secondary" type="button" data-command="applySafeFixes">Apply Safe Fixes</button>
@@ -67,15 +67,15 @@ function renderReleaseBadges(): string {
 }
 
 function renderFooter(): string {
-  return '<footer class="footer-section"><p>One-Click Turbo V1.0 · <a href="https://github.com/evhye38496-svg/one-click-turbo/issues">Report Issue</a> · <a href="https://marketplace.visualstudio.com/items?itemName=Evhye.one-click-turbo&ssr=false#review-details">Write a Review</a></p></footer>';
+  return '<footer class="footer-section"><p>PerfScope V1.0 · <a href="https://github.com/evhye38496-svg/PerfScope/issues">Report Issue</a> · <a href="https://marketplace.visualstudio.com/items?itemName=Evhye.perfscope&ssr=false#review-details">Write a Review</a></p></footer>';
 }
 
-function renderEmptyState(operation?: TurboOperationSummary): string {
+function renderEmptyState(operation?: PerfScopeOperationSummary): string {
   return `<section class="launcher-shell">
   <header class="hero-grid">
     <section class="card score-hero">
       <span class="eyebrow">Ready</span>
-      <h1>One-Click Turbo</h1>
+      <h1>PerfScope</h1>
       <p>Run a scan to build your VS Code performance report.</p>
       ${renderReleaseBadges()}
       <div class="score-meter" aria-hidden="true"><div class="score-meter-fill"></div></div>
@@ -95,13 +95,13 @@ function renderEmptyState(operation?: TurboOperationSummary): string {
 </section>`;
 }
 
-function renderResult(result: ScanResult, viewMode: DashboardViewMode, operation?: TurboOperationSummary): string {
+function renderResult(result: ScanResult, viewMode: DashboardViewMode, operation?: PerfScopeOperationSummary): string {
   const audit = renderAudit(result);
 
   return `<section class="launcher-shell">
   <header class="hero-grid">
     <section class="card score-hero">
-      <span class="eyebrow">Turbo Score</span>
+      <span class="eyebrow">PerfScope Score</span>
       <div class="score-line">
         <strong class="score-value">${result.score}</strong>
         <span class="score-grade">${escapeHtml(result.grade)}</span>
@@ -112,7 +112,7 @@ function renderResult(result: ScanResult, viewMode: DashboardViewMode, operation
     </section>
     <section class="card score-hero">
       <span class="eyebrow">Quick Actions</span>
-      <h1>One-Click Turbo</h1>
+      <h1>PerfScope</h1>
       ${renderToolbar()}
     </section>
   </header>
@@ -140,7 +140,7 @@ function renderScanSummary(result: ScanResult): string {
   return `${result.issues.length} issues found across ${result.stats.totalExtensions} extensions.`;
 }
 
-function renderOperation(operation?: TurboOperationSummary): string {
+function renderOperation(operation?: PerfScopeOperationSummary): string {
   if (!operation) {
     return '';
   }

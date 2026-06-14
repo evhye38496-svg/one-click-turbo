@@ -15,7 +15,7 @@ A 30-second VS Code performance health scanner: audit extensions, score your set
 Website:
 
 ```text
-https://marketplace.visualstudio.com/items?itemName=Evhye.one-click-turbo
+https://marketplace.visualstudio.com/items?itemName=Evhye.perfscope
 ```
 
 Topics:
@@ -47,7 +47,7 @@ Settings -> General -> Social preview
 
 Upload a custom 1280x640 PNG that clearly shows:
 
-- One-Click Turbo
+- PerfScope
 - VS Code performance health check
 - Scan / Score / Safe Fixes
 - Offline / no telemetry / preview-before-write
@@ -63,7 +63,7 @@ Enable:
 Recommended discussion categories:
 
 - Ideas
-- Show your Turbo Score
+- Show your PerfScope Score
 - Help
 
 ## Labels
@@ -96,7 +96,7 @@ Acceptance:
 ```text
 Title: Improve Markdown report examples
 Body:
-Add an example report section to docs showing a safe, privacy-preserving Turbo report.
+Add an example report section to docs showing a safe, privacy-preserving PerfScope report.
 Acceptance:
 - Example contains no private data.
 - Example explains Full Scan vs Quick Audit.

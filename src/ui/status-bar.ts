@@ -1,13 +1,13 @@
 import * as vscode from 'vscode';
-import { createStatusPresentation, type TurboStatusSnapshot } from './status-bar-state';
+import { createStatusPresentation, type PerfScopeStatusSnapshot } from './status-bar-state';
 
-export class TurboStatusBar {
+export class PerfScopeStatusBar {
   private readonly item: vscode.StatusBarItem;
-  private lastScore: TurboStatusSnapshot | undefined;
+  private lastScore: PerfScopeStatusSnapshot | undefined;
 
   constructor() {
     this.item = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Right, 100);
-    this.item.command = 'turbo.showDashboard';
+    this.item.command = 'perfscope.showDashboard';
     this.apply({ kind: 'idle' });
   }
 
@@ -52,7 +52,7 @@ export class TurboStatusBar {
     this.item.dispose();
   }
 
-  private apply(snapshot: TurboStatusSnapshot): void {
+  private apply(snapshot: PerfScopeStatusSnapshot): void {
     const presentation = createStatusPresentation(snapshot);
     this.item.text = presentation.text;
     this.item.tooltip = presentation.tooltip;

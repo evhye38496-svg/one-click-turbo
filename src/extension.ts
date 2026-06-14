@@ -3,19 +3,19 @@ import { exportReportCommand } from './commands/export-report';
 import { applySafeFixesCommand, undoLastFixCommand } from './commands/fix';
 import { purgeCommand } from './commands/purge';
 import { quickAuditCommand, runFullScanCommand } from './commands/scan';
-import { TurboState } from './state/turbo-state';
-import { TurboDashboard } from './ui/dashboard';
-import { TurboNotifier } from './ui/notifications';
-import { TurboSidebarProvider } from './ui/sidebar';
-import { TurboStatusBar } from './ui/status-bar';
-import { shouldRevealDashboard, type TurboCommandOptions } from './ui/turbo-command-options';
+import { PerfScopeState } from './state/perfscope-state';
+import { PerfScopeDashboard } from './ui/dashboard';
+import { PerfScopeNotifier } from './ui/notifications';
+import { PerfScopeSidebarProvider } from './ui/sidebar';
+import { PerfScopeStatusBar } from './ui/status-bar';
+import { shouldRevealDashboard, type PerfScopeCommandOptions } from './ui/perfscope-command-options';
 
 export function activate(context: vscode.ExtensionContext): void {
-  const dashboard = new TurboDashboard(context.extensionUri);
-  const notifier = new TurboNotifier();
-  const state = new TurboState();
-  const sidebar = new TurboSidebarProvider(context.extensionUri, () => state.getSnapshot());
-  const statusBar = new TurboStatusBar();
+  const dashboard = new PerfScopeDashboard(context.extensionUri);
+  const notifier = new PerfScopeNotifier();
+  const state = new PerfScopeState();
+  const sidebar = new PerfScopeSidebarProvider(context.extensionUri, () => state.getSnapshot());
+  const statusBar = new PerfScopeStatusBar();
   statusBar.show();
 
   context.subscriptions.push(
@@ -24,12 +24,12 @@ export function activate(context: vscode.ExtensionContext): void {
       sidebar.update(snapshot);
       dashboard.updateState(snapshot);
     }),
-    vscode.window.registerWebviewViewProvider('turbo.dashboard', sidebar)
+    vscode.window.registerWebviewViewProvider('perfscope.dashboard', sidebar)
   );
 
   context.subscriptions.push(
     statusBar,
-    vscode.commands.registerCommand('turbo.runFullScan', (options?: TurboCommandOptions) =>
+    vscode.commands.registerCommand('perfscope.runFullScan', (options?: PerfScopeCommandOptions) =>
       runFullScanCommand({
         dashboard,
         notifier,
@@ -40,11 +40,11 @@ export function activate(context: vscode.ExtensionContext): void {
         }
       })
     ),
-    vscode.commands.registerCommand('turbo.showDashboard', () => {
+    vscode.commands.registerCommand('perfscope.showDashboard', () => {
       dashboard.updateState(state.getSnapshot());
       dashboard.show();
     }),
-    vscode.commands.registerCommand('turbo.quickAudit', (options?: TurboCommandOptions) =>
+    vscode.commands.registerCommand('perfscope.quickAudit', (options?: PerfScopeCommandOptions) =>
       quickAuditCommand({
         dashboard,
         notifier,
@@ -55,7 +55,7 @@ export function activate(context: vscode.ExtensionContext): void {
         }
       })
     ),
-    vscode.commands.registerCommand('turbo.exportReport', () =>
+    vscode.commands.registerCommand('perfscope.exportReport', () =>
       exportReportCommand({
         context,
         getLastResult() {
@@ -68,7 +68,7 @@ export function activate(context: vscode.ExtensionContext): void {
         }
       })
     ),
-    vscode.commands.registerCommand('turbo.applySafeFixes', () =>
+    vscode.commands.registerCommand('perfscope.applySafeFixes', () =>
       applySafeFixesCommand({
         context,
         notifier,
@@ -78,7 +78,7 @@ export function activate(context: vscode.ExtensionContext): void {
         }
       })
     ),
-    vscode.commands.registerCommand('turbo.undoLastFix', () =>
+    vscode.commands.registerCommand('perfscope.undoLastFix', () =>
       undoLastFixCommand({
         context,
         notifier,
@@ -88,7 +88,7 @@ export function activate(context: vscode.ExtensionContext): void {
         }
       })
     ),
-    vscode.commands.registerCommand('turbo.purge', () =>
+    vscode.commands.registerCommand('perfscope.purge', () =>
       purgeCommand({
         context,
         notifier,

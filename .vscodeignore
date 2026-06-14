@@ -9,9 +9,14 @@ src/**
 test/**
 out/test/**
 out/src/release/**
+out/src/state/turbo-*.js
+out/src/state/turbo-*.js.map
+out/src/ui/turbo-*.js
+out/src/ui/turbo-*.js.map
 **/*.map
 tsconfig.json
 package-lock.json
 npm-debug.log*
 one-click-turbo-prd.md
 turbo-report-*.md
+perfscope-report-*.md

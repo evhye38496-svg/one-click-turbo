@@ -14,10 +14,10 @@ import {
 } from '../../src/ui/notification-messages';
 
 test('notification summaries are concise and stable', () => {
-  assert.equal(fixCompleteMessage({ applied: 2, skipped: 1, failed: 0 }), 'Turbo fix complete - applied 2, skipped 1, failed 0.');
+  assert.equal(fixCompleteMessage({ applied: 2, skipped: 1, failed: 0 }), 'PerfScope fix complete - applied 2, skipped 1, failed 0.');
   assert.equal(
     fixCompleteMessage({ applied: 0, skipped: 2, failed: 0, retainedPreviousChangeLog: true }),
-    'Turbo fix complete - applied 0, skipped 2, failed 0. No new Change Log was created; the previous undo record is still retained.'
+    'PerfScope fix complete - applied 0, skipped 2, failed 0. No new Change Log was created; the previous undo record is still retained.'
   );
   assert.equal(
     rollbackCompleteMessage({
@@ -39,18 +39,18 @@ test('notification summaries are concise and stable', () => {
         ]
       }
     }),
-    'Turbo undo complete - restored 1, skipped 1, failed 0. 1 Change Log entries remain for a future undo attempt.'
+    'PerfScope undo complete - restored 1, skipped 1, failed 0. 1 Change Log entries remain for a future undo attempt.'
   );
-  assert.equal(exportCompleteMessage('C:\\report.md'), 'Turbo report exported - C:\\report.md');
-  assert.equal(exportCanceledMessage(), 'Turbo report export canceled.');
+  assert.equal(exportCompleteMessage('C:\\report.md'), 'PerfScope report exported - C:\\report.md');
+  assert.equal(exportCanceledMessage(), 'PerfScope report export canceled.');
   assert.equal(
     purgeCompleteMessage({ clearedWorkspaceState: true, clearedGlobalState: false, clearedUiState: true, canceled: false }),
-    'Turbo purge complete - cleared workspace state, UI report state. Settings were not modified.'
+    'PerfScope purge complete - cleared workspace state, UI report state. Settings were not modified.'
   );
-  assert.equal(purgeCompleteMessage({ clearedWorkspaceState: false, clearedGlobalState: false, clearedUiState: false, canceled: true }), 'Turbo purge canceled.');
-  assert.equal(noReportMessage(), 'Turbo: Run a scan before exporting a Markdown report.');
-  assert.equal(noFixesMessage(), 'Turbo: No workspace safe fixes are available.');
-  assert.equal(noChangeLogMessage(), 'Turbo: No workspace fix Change Log found.');
+  assert.equal(purgeCompleteMessage({ clearedWorkspaceState: false, clearedGlobalState: false, clearedUiState: false, canceled: true }), 'PerfScope purge canceled.');
+  assert.equal(noReportMessage(), 'PerfScope: Run a scan before exporting a Markdown report.');
+  assert.equal(noFixesMessage(), 'PerfScope: No workspace safe fixes are available.');
+  assert.equal(noChangeLogMessage(), 'PerfScope: No workspace fix Change Log found.');
   assert.equal(
     auditCompleteMessage({
       kind: 'quick-audit',
@@ -94,10 +94,10 @@ test('notification summaries are concise and stable', () => {
         redundancyHints: []
       }
     }),
-    'Turbo audit complete - 0 extensions, 1 guidance matches. Workspace configuration and environment stats were not measured.'
+    'PerfScope audit complete - 0 extensions, 1 guidance matches. Workspace configuration and environment stats were not measured.'
   );
 });
 
 test('notification error message includes action and error detail', () => {
-  assert.equal(errorMessage('scan', new Error('boom')), 'Turbo scan failed: boom');
+  assert.equal(errorMessage('scan', new Error('boom')), 'PerfScope scan failed: boom');
 });

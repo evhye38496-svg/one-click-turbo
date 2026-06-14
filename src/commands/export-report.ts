@@ -2,16 +2,16 @@ import * as vscode from 'vscode';
 import { loadWorkspaceChangeLog } from '../fix/change-log-manager';
 import { createDefaultReportFileName, createMarkdownReport } from '../report/markdown-report';
 import type { ScanResult } from '../types';
-import type { TurboOperationSummary } from '../state/turbo-state';
-import { TurboNotifier } from '../ui/notifications';
-import { TurboStatusBar } from '../ui/status-bar';
+import type { PerfScopeOperationSummary } from '../state/perfscope-state';
+import { PerfScopeNotifier } from '../ui/notifications';
+import { PerfScopeStatusBar } from '../ui/status-bar';
 
 export interface ExportReportDependencies {
   context: vscode.ExtensionContext;
   getLastResult(): ScanResult | undefined;
-  notifier: TurboNotifier;
-  statusBar: TurboStatusBar;
-  recordOperation(operation: Omit<TurboOperationSummary, 'timestamp'>): void;
+  notifier: PerfScopeNotifier;
+  statusBar: PerfScopeStatusBar;
+  recordOperation(operation: Omit<PerfScopeOperationSummary, 'timestamp'>): void;
 }
 
 export async function exportReportCommand(deps: ExportReportDependencies): Promise<void> {
@@ -32,8 +32,8 @@ export async function exportReportCommand(deps: ExportReportDependencies): Promi
     filters: {
       Markdown: ['md']
     },
-    saveLabel: 'Export Turbo Report',
-    title: 'Export Turbo Report'
+    saveLabel: 'Export PerfScope Report',
+    title: 'Export PerfScope Report'
   });
 
   if (!target) {

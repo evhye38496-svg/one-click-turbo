@@ -18,8 +18,8 @@ export interface ReleaseGuardResult {
   errors: string[];
 }
 
-const REQUIRED_FILES = ['README.md', 'CHANGELOG.md', 'LICENSE', 'SUPPORT.md', 'resources/turbo-128.png'];
-const REQUIRED_IGNORES = ['src/**', 'test/**', 'out/test/**', '.vscode-test/**', 'one-click-turbo-prd.md', 'turbo-report-*.md', '**/*.map'];
+const REQUIRED_FILES = ['README.md', 'CHANGELOG.md', 'LICENSE', 'SUPPORT.md', 'resources/perfscope-128.png'];
+const REQUIRED_IGNORES = ['src/**', 'test/**', 'out/test/**', '.vscode-test/**', 'one-click-turbo-prd.md', 'turbo-report-*.md', 'perfscope-report-*.md', '**/*.map'];
 const PLACEHOLDER = 'example.com/replace-with';
 
 export function validateRelease(input: ReleaseGuardInput): ReleaseGuardResult {
@@ -38,8 +38,8 @@ export function validateRelease(input: ReleaseGuardInput): ReleaseGuardResult {
     errors.push('package.json must not include private for Marketplace release readiness.');
   }
 
-  if (packageJson.icon !== 'resources/turbo-128.png') {
-    errors.push('package.json icon must be resources/turbo-128.png.');
+  if (packageJson.icon !== 'resources/perfscope-128.png') {
+    errors.push('package.json icon must be resources/perfscope-128.png.');
   }
 
   const urls = [
@@ -55,8 +55,8 @@ export function validateRelease(input: ReleaseGuardInput): ReleaseGuardResult {
   }
 
   const packageScript = packageJson.scripts?.['package:vsix'];
-  if (typeof packageScript !== 'string' || !packageScript.includes('dist/one-click-turbo-1.0.0.vsix')) {
-    errors.push('package:vsix must output dist/one-click-turbo-1.0.0.vsix.');
+  if (typeof packageScript !== 'string' || !packageScript.includes('dist/perfscope-1.0.0.vsix')) {
+    errors.push('package:vsix must output dist/perfscope-1.0.0.vsix.');
   }
 
   for (const requiredFile of REQUIRED_FILES) {

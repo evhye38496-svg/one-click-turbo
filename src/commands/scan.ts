@@ -1,14 +1,14 @@
 import * as vscode from 'vscode';
 import { runQuickAudit, runScan } from '../engine/scan-engine';
 import type { ScanResult } from '../types';
-import { TurboDashboard } from '../ui/dashboard';
-import { TurboNotifier } from '../ui/notifications';
-import { TurboStatusBar } from '../ui/status-bar';
+import { PerfScopeDashboard } from '../ui/dashboard';
+import { PerfScopeNotifier } from '../ui/notifications';
+import { PerfScopeStatusBar } from '../ui/status-bar';
 
 export interface ScanCommandDependencies {
-  dashboard: TurboDashboard;
-  notifier: TurboNotifier;
-  statusBar: TurboStatusBar;
+  dashboard: PerfScopeDashboard;
+  notifier: PerfScopeNotifier;
+  statusBar: PerfScopeStatusBar;
   revealDashboard: boolean;
   setLastResult(result: ScanResult, kind: 'scan' | 'audit'): void;
 }
@@ -20,7 +20,7 @@ export async function runFullScanCommand(deps: ScanCommandDependencies): Promise
     await vscode.window.withProgress(
       {
         location: vscode.ProgressLocation.Notification,
-        title: 'Turbo scan is running',
+        title: 'PerfScope scan is running',
         cancellable: false
       },
       async () => {
@@ -47,7 +47,7 @@ export async function quickAuditCommand(deps: ScanCommandDependencies): Promise<
     await vscode.window.withProgress(
       {
         location: vscode.ProgressLocation.Notification,
-        title: 'Turbo extension audit is running',
+        title: 'PerfScope extension audit is running',
         cancellable: false
       },
       async () => {

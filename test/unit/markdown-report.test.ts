@@ -109,15 +109,15 @@ test('markdown report includes score, stats, issues, audit, and fix status', () 
     ]
   });
 
-  assert.match(report, /Turbo Score: 76/);
-  assert.match(report, /Release: One-Click Turbo 1\.0\.0/);
+  assert.match(report, /PerfScope Score: 76/);
+  assert.match(report, /Release: PerfScope 1\.0\.0/);
   assert.match(report, /Scan Type: Full Scan/);
   assert.match(report, /## Issues/);
   assert.match(report, /## Extension Audit/);
   assert.match(report, /Known Guidance and Alternatives/);
   assert.match(report, /Safe Fix and Undo Status/);
   assert.match(report, /Last successful workspace write Change Log/);
-  assert.match(report, /latest Turbo run that actually wrote Workspace settings/);
+  assert.match(report, /latest PerfScope run that actually wrote Workspace settings/);
   assert.match(report, /Purge Behavior/);
   assert.match(report, /Workspace Folder scope/);
   assert.match(report, /file:\/\/\/repo\/app/);
@@ -147,5 +147,5 @@ test('markdown cells escape table separators, newlines, and html', () => {
 });
 
 test('default report filename is stable and timestamped', () => {
-  assert.equal(createDefaultReportFileName(new Date('2026-06-12T06:05:00')), 'turbo-report-2026-06-12-0605.md');
+  assert.equal(createDefaultReportFileName(new Date('2026-06-12T06:05:00')), 'perfscope-report-2026-06-12-0605.md');
 });

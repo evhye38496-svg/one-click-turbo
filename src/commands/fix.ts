@@ -6,15 +6,15 @@ import { detectWorkspaceGitRisk } from '../fix/git-tracker';
 import { shouldWarnForGitRisk } from '../fix/git-risk';
 import { applyWorkspaceFixes } from '../fix/settings-writer';
 import { rollbackWorkspaceChangeLog } from '../fix/rollback';
-import { TurboNotifier } from '../ui/notifications';
-import { TurboStatusBar } from '../ui/status-bar';
-import type { TurboOperationSummary } from '../state/turbo-state';
+import { PerfScopeNotifier } from '../ui/notifications';
+import { PerfScopeStatusBar } from '../ui/status-bar';
+import type { PerfScopeOperationSummary } from '../state/perfscope-state';
 
 export interface FixCommandDependencies {
   context: vscode.ExtensionContext;
-  notifier: TurboNotifier;
-  statusBar: TurboStatusBar;
-  recordOperation(operation: Omit<TurboOperationSummary, 'timestamp'>): void;
+  notifier: PerfScopeNotifier;
+  statusBar: PerfScopeStatusBar;
+  recordOperation(operation: Omit<PerfScopeOperationSummary, 'timestamp'>): void;
 }
 
 function inspectWorkspaceValue<T>(key: string, scope?: vscode.Uri): T | undefined {
@@ -70,7 +70,7 @@ export async function applySafeFixesCommand(deps: FixCommandDependencies): Promi
 
   const selected = await vscode.window.showQuickPick(proposals.map(toPreviewItem), {
     canPickMany: true,
-    title: 'Turbo Fix - Workspace Safe Fixes',
+    title: 'PerfScope Fix - Workspace Safe Fixes',
     placeHolder: 'Select workspace configuration fixes to apply'
   });
 
@@ -93,8 +93,8 @@ export async function applySafeFixesCommand(deps: FixCommandDependencies): Promi
   if (shouldWarnForGitRisk(gitRisk)) {
     const choice = await vscode.window.showWarningMessage(
       gitRisk === 'likelyTracked'
-        ? 'Turbo will modify Workspace settings. This workspace appears to be a Git repository, so .vscode/settings.json changes may be committed. Continue?'
-        : 'Turbo could not verify the Git status of this workspace. Workspace settings changes may be committed if this folder is tracked. Continue?',
+        ? 'PerfScope will modify Workspace settings. This workspace appears to be a Git repository, so .vscode/settings.json changes may be committed. Continue?'
+        : 'PerfScope could not verify the Git status of this workspace. Workspace settings changes may be committed if this folder is tracked. Continue?',
       { modal: true },
       'Continue',
       'Cancel'

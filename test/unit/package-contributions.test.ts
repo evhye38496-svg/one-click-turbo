@@ -20,18 +20,18 @@ function packageJson(): PackageJson {
   return JSON.parse(readFileSync('package.json', 'utf8')) as PackageJson;
 }
 
-test('package contributes One-Click Turbo activity bar container and dashboard view', () => {
+test('package contributes PerfScope activity bar container and dashboard view', () => {
   const pkg = packageJson();
 
-  assert.ok(pkg.activationEvents?.includes('onView:turbo.dashboard'));
-  assert.deepEqual(pkg.contributes?.viewsContainers?.activitybar?.find((view) => view.id === 'turbo'), {
-    id: 'turbo',
-    title: 'One-Click Turbo',
-    icon: 'resources/turbo.svg'
+  assert.ok(pkg.activationEvents?.includes('onView:perfscope.dashboard'));
+  assert.deepEqual(pkg.contributes?.viewsContainers?.activitybar?.find((view) => view.id === 'perfscope'), {
+    id: 'perfscope',
+    title: 'PerfScope',
+    icon: 'resources/perfscope.svg'
   });
-  assert.deepEqual(pkg.contributes?.views?.turbo?.find((view) => view.id === 'turbo.dashboard'), {
+  assert.deepEqual(pkg.contributes?.views?.perfscope?.find((view) => view.id === 'perfscope.dashboard'), {
     type: 'webview',
-    id: 'turbo.dashboard',
+    id: 'perfscope.dashboard',
     name: 'Dashboard'
   });
 });
@@ -42,5 +42,5 @@ test('package is marked as V1.0 Marketplace-ready metadata', () => {
   assert.equal(pkg.version, '1.0.0');
   assert.equal(pkg.preview, undefined);
   assert.equal(pkg.private, undefined);
-  assert.equal(pkg.icon, 'resources/turbo-128.png');
+  assert.equal(pkg.icon, 'resources/perfscope-128.png');
 });

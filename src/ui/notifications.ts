@@ -17,7 +17,7 @@ import {
 const OPEN_DASHBOARD = 'Open Dashboard';
 const RUN_SCAN_AGAIN = 'Run Scan Again';
 
-export class TurboNotifier {
+export class PerfScopeNotifier {
   showScanComplete(result: ScanResult): void {
     void vscode.window.showInformationMessage(scanCompleteMessage(result), OPEN_DASHBOARD).then(runAction);
   }
@@ -27,7 +27,7 @@ export class TurboNotifier {
   }
 
   showFixComplete(result: ApplyFixResult): void {
-    void vscode.window.showInformationMessage(`${fixCompleteMessage(result)} Run Turbo Scan again to refresh the report.`, RUN_SCAN_AGAIN).then(runAction);
+    void vscode.window.showInformationMessage(`${fixCompleteMessage(result)} Run PerfScope Scan again to refresh the report.`, RUN_SCAN_AGAIN).then(runAction);
   }
 
   showRollbackComplete(result: RollbackResult): void {
@@ -65,11 +65,11 @@ export class TurboNotifier {
 
 function runAction(action: string | undefined): void {
   if (action === OPEN_DASHBOARD) {
-    void vscode.commands.executeCommand('turbo.showDashboard');
+    void vscode.commands.executeCommand('perfscope.showDashboard');
     return;
   }
 
   if (action === RUN_SCAN_AGAIN) {
-    void vscode.commands.executeCommand('turbo.runFullScan');
+    void vscode.commands.executeCommand('perfscope.runFullScan');
   }
 }

@@ -1,6 +1,6 @@
-# Contributing to One-Click Turbo
+# Contributing to PerfScope
 
-Thanks for considering a contribution. One-Click Turbo is intentionally conservative: it is offline, preview-first, and avoids modifying user or extension state without explicit confirmation.
+Thanks for considering a contribution. PerfScope is intentionally conservative: it is offline, preview-first, and avoids modifying user or extension state without explicit confirmation.
 
 ## Local Setup
 

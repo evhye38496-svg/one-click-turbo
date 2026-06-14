@@ -1,19 +1,19 @@
 {
-  "name": "one-click-turbo",
-  "displayName": "One-Click Turbo Health",
+  "name": "perfscope",
+  "displayName": "PerfScope — VS Code Performance Lens",
   "description": "VS Code performance health scanner and optimization guide - analyze extensions, find slowdown causes, and apply safe workspace fixes with one click.",
   "version": "1.0.0",
   "publisher": "Evhye",
   "license": "MIT",
-  "icon": "resources/turbo-128.png",
+  "icon": "resources/perfscope-128.png",
   "repository": {
     "type": "git",
-    "url": "https://github.com/evhye38496-svg/one-click-turbo.git"
+    "url": "https://github.com/evhye38496-svg/PerfScope.git"
   },
   "bugs": {
-    "url": "https://github.com/evhye38496-svg/one-click-turbo/issues"
+    "url": "https://github.com/evhye38496-svg/PerfScope/issues"
   },
-  "homepage": "https://github.com/evhye38496-svg/one-click-turbo#readme",
+  "homepage": "https://github.com/evhye38496-svg/PerfScope#readme",
   "keywords": [
     "performance",
     "optimization",
@@ -51,69 +51,69 @@
     "workspace"
   ],
   "activationEvents": [
-    "onCommand:turbo.runFullScan",
-    "onCommand:turbo.showDashboard",
-    "onCommand:turbo.quickAudit",
-    "onCommand:turbo.exportReport",
-    "onCommand:turbo.applySafeFixes",
-    "onCommand:turbo.undoLastFix",
-    "onCommand:turbo.purge",
-    "onView:turbo.dashboard"
+    "onCommand:perfscope.runFullScan",
+    "onCommand:perfscope.showDashboard",
+    "onCommand:perfscope.quickAudit",
+    "onCommand:perfscope.exportReport",
+    "onCommand:perfscope.applySafeFixes",
+    "onCommand:perfscope.undoLastFix",
+    "onCommand:perfscope.purge",
+    "onView:perfscope.dashboard"
   ],
   "contributes": {
     "viewsContainers": {
       "activitybar": [
         {
-          "id": "turbo",
-          "title": "One-Click Turbo",
-          "icon": "resources/turbo.svg"
+          "id": "perfscope",
+          "title": "PerfScope",
+          "icon": "resources/perfscope.svg"
         }
       ]
     },
     "views": {
-      "turbo": [
+      "perfscope": [
         {
           "type": "webview",
-          "id": "turbo.dashboard",
+          "id": "perfscope.dashboard",
           "name": "Dashboard"
         }
       ]
     },
     "commands": [
       {
-        "command": "turbo.runFullScan",
-        "title": "Turbo: Run Full Scan",
-        "category": "Turbo"
+        "command": "perfscope.runFullScan",
+        "title": "PerfScope: Run Full Scan",
+        "category": "PerfScope"
       },
       {
-        "command": "turbo.showDashboard",
-        "title": "Turbo: Show Dashboard",
-        "category": "Turbo"
+        "command": "perfscope.showDashboard",
+        "title": "PerfScope: Show Dashboard",
+        "category": "PerfScope"
       },
       {
-        "command": "turbo.quickAudit",
-        "title": "Turbo: Quick Extension Audit",
-        "category": "Turbo"
+        "command": "perfscope.quickAudit",
+        "title": "PerfScope: Quick Extension Audit",
+        "category": "PerfScope"
       },
       {
-        "command": "turbo.exportReport",
-        "title": "Turbo: Export Report (Markdown)",
-        "category": "Turbo"
+        "command": "perfscope.exportReport",
+        "title": "PerfScope: Export Report (Markdown)",
+        "category": "PerfScope"
       },
       {
-        "command": "turbo.applySafeFixes",
-        "title": "Turbo: Apply All Safe Fixes",
-        "category": "Turbo"
+        "command": "perfscope.applySafeFixes",
+        "title": "PerfScope: Apply All Safe Fixes",
+        "category": "PerfScope"
       },
       {
-        "command": "turbo.undoLastFix",
-        "title": "Turbo: Undo Last Fix",
-        "category": "Turbo"
+        "command": "perfscope.undoLastFix",
+        "title": "PerfScope: Undo Last Fix",
+        "category": "PerfScope"
       },
       {
-        "command": "turbo.purge",
-        "title": "Turbo: Purge & Prepare for Uninstall",
-        "category": "Turbo"
+        "command": "perfscope.purge",
+        "title": "PerfScope: Purge & Prepare for Uninstall",
+        "category": "PerfScope"
       }
     ]
   },
@@ -126,7 +126,7 @@
     "test:vscode": "npm run compile && node ./out/test/vscode/runTest.js",
     "vscode:prepublish": "npm run compile",
     "package": "npm run compile",
-    "package:vsix": "node -e \"require('fs').mkdirSync('dist',{recursive:true})\" && vsce package --out dist/one-click-turbo-1.0.0.vsix",
+    "package:vsix": "node -e \"require('fs').mkdirSync('dist',{recursive:true})\" && vsce package --out dist/perfscope-1.0.0.vsix",
     "verify:release": "npm run compile && node scripts/verify-release.js && npm test && npm run test:vscode && npm run package:vsix"
   },
   "dependencies": {

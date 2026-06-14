@@ -11,20 +11,21 @@ const vscodeignore = [
   'out/src/release/**',
   '**/*.map',
   'one-click-turbo-prd.md',
-  'turbo-report-*.md'
+  'turbo-report-*.md',
+  'perfscope-report-*.md'
 ].join('\n');
 
-const files = ['README.md', 'CHANGELOG.md', 'LICENSE', 'SUPPORT.md', 'resources/turbo-128.png'];
+const files = ['README.md', 'CHANGELOG.md', 'LICENSE', 'SUPPORT.md', 'resources/perfscope-128.png'];
 
 function packageJson(overrides = {}) {
   return {
     version: '1.0.0',
-    icon: 'resources/turbo-128.png',
-    repository: { url: 'https://github.com/example/one-click-turbo.git' },
-    bugs: { url: 'https://github.com/example/one-click-turbo/issues' },
-    homepage: 'https://github.com/example/one-click-turbo',
+    icon: 'resources/perfscope-128.png',
+    repository: { url: 'https://github.com/example/perfscope.git' },
+    bugs: { url: 'https://github.com/example/perfscope/issues' },
+    homepage: 'https://github.com/example/perfscope',
     scripts: {
-      'package:vsix': 'vsce package --out dist/one-click-turbo-1.0.0.vsix'
+      'package:vsix': 'vsce package --out dist/perfscope-1.0.0.vsix'
     },
     ...overrides
   };
@@ -33,7 +34,7 @@ function packageJson(overrides = {}) {
 test('release guard fails on placeholder project URLs', () => {
   const result = validateRelease({
     packageJson: packageJson({
-      repository: { url: 'https://example.com/replace-with-one-click-turbo-repository.git' }
+      repository: { url: 'https://example.com/replace-with-perfscope-repository.git' }
     }),
     vscodeignore,
     files

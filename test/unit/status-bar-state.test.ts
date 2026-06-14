@@ -4,8 +4,8 @@ import { createStatusPresentation } from '../../src/ui/status-bar-state';
 
 test('status bar presents active states with spinner text', () => {
   assert.deepEqual(createStatusPresentation({ kind: 'scanning' }), {
-    text: '$(sync~spin) Turbo',
-    tooltip: 'One-Click Turbo: full scan is running'
+    text: '$(sync~spin) PerfScope',
+    tooltip: 'PerfScope: full scan is running'
   });
   assert.equal(createStatusPresentation({ kind: 'auditing' }).text, '$(sync~spin) Audit');
   assert.equal(createStatusPresentation({ kind: 'fixing' }).text, '$(sync~spin) Fix');
@@ -25,6 +25,6 @@ test('status bar presents score and error states', () => {
   assert.match(score.tooltip, /2026-06-12/);
 
   const error = createStatusPresentation({ kind: 'error', message: 'Scan failed' });
-  assert.equal(error.text, '$(warning) Turbo');
+  assert.equal(error.text, '$(warning) PerfScope');
   assert.match(error.tooltip, /Scan failed/);
 });

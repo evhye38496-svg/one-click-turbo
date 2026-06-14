@@ -1,15 +1,15 @@
 import * as vscode from 'vscode';
 import type { ScanResult } from '../types';
-import type { TurboUiState } from '../state/turbo-state';
+import type { PerfScopeUiState } from '../state/perfscope-state';
 import { createCspNonce } from '../utils/csp-nonce';
 import { resolveDashboardCommand } from './dashboard-messages';
 import { renderDashboardHtml, type DashboardViewMode } from './dashboard-renderer';
-import { executeTurboCommand } from './turbo-command-dispatch';
+import { executePerfScopeCommand } from './perfscope-command-dispatch';
 
-export class TurboDashboard {
+export class PerfScopeDashboard {
   private panel: vscode.WebviewPanel | undefined;
   private lastResult: ScanResult | undefined;
-  private lastState: TurboUiState = {};
+  private lastState: PerfScopeUiState = {};
   private viewMode: DashboardViewMode = 'scan';
 
   constructor(private readonly extensionUri: vscode.Uri) {}
@@ -18,8 +18,8 @@ export class TurboDashboard {
     this.viewMode = viewMode;
     if (!this.panel) {
       this.panel = vscode.window.createWebviewPanel(
-        'turboDashboard',
-        'One-Click Turbo',
+        'perfscopeDashboard',
+        'PerfScope',
         vscode.ViewColumn.One,
         {
           enableScripts: true,
@@ -30,7 +30,7 @@ export class TurboDashboard {
       this.panel.webview.onDidReceiveMessage((message) => {
         const command = resolveDashboardCommand(message);
         if (command) {
-          executeTurboCommand(command, 'dashboard');
+          executePerfScopeCommand(command, 'dashboard');
         }
       });
 
@@ -55,7 +55,7 @@ export class TurboDashboard {
     }
   }
 
-  updateState(state: TurboUiState, viewMode: DashboardViewMode = this.viewMode): void {
+  updateState(state: PerfScopeUiState, viewMode: DashboardViewMode = this.viewMode): void {
     this.lastState = state;
     this.lastResult = state.lastResult;
     this.viewMode = viewMode;

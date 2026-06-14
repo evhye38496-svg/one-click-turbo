@@ -1,5 +1,5 @@
 name: Performance scan feedback
-description: Share a Turbo report or feedback about scan results.
+description: Share a PerfScope report or feedback about scan results.
 title: "[Scan feedback]: "
 labels:
   - feedback
@@ -7,11 +7,11 @@ body:
   - type: markdown
     attributes:
       value: |
-        Use this when One-Click Turbo produced a confusing score, issue, audit hint, or safe fix suggestion. Please remove private data before sharing.
+        Use this when PerfScope produced a confusing score, issue, audit hint, or safe fix suggestion. Please remove private data before sharing.
   - type: input
     id: score
     attributes:
-      label: Turbo Score
+      label: PerfScope Score
       placeholder: "86"
   - type: input
     id: extensions

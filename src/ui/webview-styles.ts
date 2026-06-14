@@ -4,27 +4,27 @@ export function renderWebviewStyles(surface: 'dashboard' | 'sidebar'): string {
 
   return `
     :root {
-      --turbo-radius: 8px;
-      --turbo-radius-sm: 6px;
-      --turbo-gap: 12px;
-      --turbo-gap-lg: 18px;
-      --turbo-motion: 180ms cubic-bezier(.2, .8, .2, 1);
-      --turbo-border: var(--vscode-panel-border);
-      --turbo-card: var(--vscode-editorWidget-background, var(--vscode-sideBar-background));
-      --turbo-card-alt: var(--vscode-input-background, var(--vscode-editor-background));
-      --turbo-text: var(--vscode-foreground);
-      --turbo-muted: var(--vscode-descriptionForeground);
-      --turbo-accent: var(--vscode-button-background);
-      --turbo-accent-text: var(--vscode-button-foreground);
-      --turbo-accent-hover: var(--vscode-button-hoverBackground);
-      --turbo-focus: var(--vscode-focusBorder);
-      --turbo-shadow: 0 8px 18px rgba(0, 0, 0, .16);
+      --perfscope-radius: 8px;
+      --perfscope-radius-sm: 6px;
+      --perfscope-gap: 12px;
+      --perfscope-gap-lg: 18px;
+      --perfscope-motion: 180ms cubic-bezier(.2, .8, .2, 1);
+      --perfscope-border: var(--vscode-panel-border);
+      --perfscope-card: var(--vscode-editorWidget-background, var(--vscode-sideBar-background));
+      --perfscope-card-alt: var(--vscode-input-background, var(--vscode-editor-background));
+      --perfscope-text: var(--vscode-foreground);
+      --perfscope-muted: var(--vscode-descriptionForeground);
+      --perfscope-accent: var(--vscode-button-background);
+      --perfscope-accent-text: var(--vscode-button-foreground);
+      --perfscope-accent-hover: var(--vscode-button-hoverBackground);
+      --perfscope-focus: var(--vscode-focusBorder);
+      --perfscope-shadow: 0 8px 18px rgba(0, 0, 0, .16);
     }
 
     * { box-sizing: border-box; }
     body {
       font-family: var(--vscode-font-family);
-      color: var(--turbo-text);
+      color: var(--perfscope-text);
       background: ${surface === 'dashboard' ? 'var(--vscode-editor-background)' : 'var(--vscode-sideBar-background)'};
       margin: 0;
     }
@@ -36,30 +36,30 @@ export function renderWebviewStyles(surface: 'dashboard' | 'sidebar'): string {
     h1 { font-size: ${surface === 'dashboard' ? '24px' : '15px'}; font-weight: 700; }
     h2 { font-size: 15px; margin-bottom: 10px; }
     h3 { font-size: 13px; margin-bottom: 4px; }
-    p { color: var(--turbo-muted); line-height: 1.45; }
+    p { color: var(--perfscope-muted); line-height: 1.45; }
 
     .launcher-shell {
       display: grid;
-      gap: var(--turbo-gap-lg);
-      animation: turbo-enter var(--turbo-motion);
+      gap: var(--perfscope-gap-lg);
+      animation: perfscope-enter var(--perfscope-motion);
     }
     .hero-grid {
       display: grid;
       grid-template-columns: minmax(220px, 1.15fr) minmax(240px, .85fr);
-      gap: var(--turbo-gap);
+      gap: var(--perfscope-gap);
       align-items: stretch;
     }
     .card, .panel-card, .issue-card, .metric-card {
-      background: var(--turbo-card);
-      border: 1px solid var(--turbo-border);
-      border-radius: var(--turbo-radius);
+      background: var(--perfscope-card);
+      border: 1px solid var(--perfscope-border);
+      border-radius: var(--perfscope-radius);
       box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-      transition: transform var(--turbo-motion), box-shadow var(--turbo-motion), border-color var(--turbo-motion), background-color var(--turbo-motion);
+      transition: transform var(--perfscope-motion), box-shadow var(--perfscope-motion), border-color var(--perfscope-motion), background-color var(--perfscope-motion);
     }
     .card:hover, .panel-card:hover, .issue-card:hover, .metric-card:hover {
       transform: translateY(-1px);
-      box-shadow: var(--turbo-shadow);
-      border-color: var(--turbo-focus);
+      box-shadow: var(--perfscope-shadow);
+      border-color: var(--perfscope-focus);
     }
     .score-hero {
       padding: ${surface === 'dashboard' ? '18px' : '12px'};
@@ -78,7 +78,7 @@ export function renderWebviewStyles(surface: 'dashboard' | 'sidebar'): string {
       font-weight: 800;
     }
     .score-grade {
-      color: var(--turbo-muted);
+      color: var(--perfscope-muted);
       font-size: ${surface === 'dashboard' ? '16px' : '12px'};
       padding-bottom: 5px;
     }
@@ -86,15 +86,15 @@ export function renderWebviewStyles(surface: 'dashboard' | 'sidebar'): string {
       height: 8px;
       overflow: hidden;
       border-radius: 999px;
-      background: var(--vscode-progressBar-background, var(--turbo-card-alt));
-      border: 1px solid var(--turbo-border);
+      background: var(--vscode-progressBar-background, var(--perfscope-card-alt));
+      border: 1px solid var(--perfscope-border);
     }
     .score-meter-fill {
       width: var(--score, 0%);
       height: 100%;
       border-radius: inherit;
-      background: var(--turbo-accent);
-      transition: width var(--turbo-motion);
+      background: var(--perfscope-accent);
+      transition: width var(--perfscope-motion);
     }
     .launcher-actions {
       display: grid;
@@ -112,30 +112,30 @@ export function renderWebviewStyles(surface: 'dashboard' | 'sidebar'): string {
       justify-content: center;
       min-height: 30px;
       border: 1px solid var(--vscode-button-border, transparent);
-      border-radius: var(--turbo-radius-sm);
+      border-radius: var(--perfscope-radius-sm);
       padding: 5px 11px;
-      color: var(--turbo-accent-text);
-      background: var(--turbo-accent);
+      color: var(--perfscope-accent-text);
+      background: var(--perfscope-accent);
       cursor: pointer;
       text-align: center;
-      transition: transform var(--turbo-motion), background-color var(--turbo-motion), box-shadow var(--turbo-motion);
+      transition: transform var(--perfscope-motion), background-color var(--perfscope-motion), box-shadow var(--perfscope-motion);
     }
     .action-button:hover {
       transform: translateY(-1px);
-      background: var(--turbo-accent-hover);
-      box-shadow: var(--turbo-shadow);
+      background: var(--perfscope-accent-hover);
+      box-shadow: var(--perfscope-shadow);
     }
     .action-button:active {
       transform: translateY(0);
       box-shadow: none;
     }
     .action-button.secondary {
-      color: var(--vscode-button-secondaryForeground, var(--turbo-text));
-      background: var(--vscode-button-secondaryBackground, var(--turbo-card-alt));
-      border-color: var(--turbo-border);
+      color: var(--vscode-button-secondaryForeground, var(--perfscope-text));
+      background: var(--vscode-button-secondaryBackground, var(--perfscope-card-alt));
+      border-color: var(--perfscope-border);
     }
     .action-button.secondary:hover {
-      background: var(--vscode-button-secondaryHoverBackground, var(--turbo-card));
+      background: var(--vscode-button-secondaryHoverBackground, var(--perfscope-card));
     }
     .primary-action {
       min-height: ${surface === 'dashboard' ? '42px' : '34px'};
@@ -144,14 +144,14 @@ export function renderWebviewStyles(surface: 'dashboard' | 'sidebar'): string {
     .section-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-      gap: var(--turbo-gap);
+      gap: var(--perfscope-gap);
     }
     .panel-card, .metric-card, .issue-card {
       padding: 12px;
     }
     .metric-card span, .eyebrow {
       display: block;
-      color: var(--turbo-muted);
+      color: var(--perfscope-muted);
       font-size: 12px;
       margin-bottom: 3px;
     }
@@ -169,25 +169,25 @@ export function renderWebviewStyles(surface: 'dashboard' | 'sidebar'): string {
       margin-top: 8px;
     }
     .tag {
-      border: 1px solid var(--turbo-border);
+      border: 1px solid var(--perfscope-border);
       border-radius: 999px;
-      color: var(--turbo-muted);
+      color: var(--perfscope-muted);
       padding: 2px 7px;
       font-size: 11px;
     }
     .critical { border-left: 4px solid var(--vscode-errorForeground); }
     .warning { border-left: 4px solid var(--vscode-editorWarning-foreground); }
     .info { border-left: 4px solid var(--vscode-editorInfo-foreground); }
-    .muted, .empty { color: var(--turbo-muted); }
+    .muted, .empty { color: var(--perfscope-muted); }
     .footer-section {
-      margin-top: var(--turbo-gap);
-      padding-top: var(--turbo-gap);
-      border-top: 1px solid var(--turbo-border);
+      margin-top: var(--perfscope-gap);
+      padding-top: var(--perfscope-gap);
+      border-top: 1px solid var(--perfscope-border);
       text-align: center;
     }
-    .footer-section a { color: var(--turbo-accent); }
+    .footer-section a { color: var(--perfscope-accent); }
 
-    @keyframes turbo-enter {
+    @keyframes perfscope-enter {
       from { opacity: 0; transform: translateY(4px); }
       to { opacity: 1; transform: translateY(0); }
     }

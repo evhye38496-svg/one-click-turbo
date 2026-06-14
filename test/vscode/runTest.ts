@@ -34,7 +34,7 @@ function getPathWithoutSpaces(projectRoot: string): string {
 }
 
 function createStagingCopy(projectRoot: string): string {
-  const stagingRoot = path.join(os.tmpdir(), 'one-click-turbo-vscode-test-root');
+  const stagingRoot = path.join(os.tmpdir(), 'perfscope-vscode-test-root');
   fs.rmSync(stagingRoot, { recursive: true, force: true });
   fs.mkdirSync(stagingRoot, { recursive: true });
 
@@ -53,7 +53,7 @@ async function main(): Promise<void> {
   const projectRoot = path.resolve(__dirname, '../../..');
   const extensionDevelopmentPath = getPathWithoutSpaces(projectRoot);
   const extensionTestsPath = path.join(extensionDevelopmentPath, 'out', 'test', 'vscode', 'suite', 'index');
-  const testDataRoot = path.join(os.tmpdir(), 'one-click-turbo-vscode-test-data');
+  const testDataRoot = path.join(os.tmpdir(), 'perfscope-vscode-test-data');
   const userDataDir = path.join(testDataRoot, 'user-data');
   const extensionsDir = path.join(testDataRoot, 'extensions');
   fs.rmSync(testDataRoot, { recursive: true, force: true });

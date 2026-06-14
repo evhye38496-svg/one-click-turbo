@@ -1,13 +1,13 @@
 import type { ScanResult } from '../types';
 import { escapeHtml } from '../utils/html-escape';
-import type { TurboOperationSummary } from '../state/turbo-state';
+import type { PerfScopeOperationSummary } from '../state/perfscope-state';
 import { renderWebviewStyles } from './webview-styles';
 
 export function renderSidebarHtml(params: {
   cspSource: string;
   nonce: string;
   result?: ScanResult;
-  operation?: TurboOperationSummary;
+  operation?: PerfScopeOperationSummary;
 }): string {
   return `<!DOCTYPE html>
 <html lang="en">
@@ -15,14 +15,14 @@ export function renderSidebarHtml(params: {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'nonce-${params.nonce}' ${params.cspSource}; script-src 'nonce-${params.nonce}' ${params.cspSource}; img-src ${params.cspSource} data:; font-src ${params.cspSource}; connect-src 'none';">
-  <title>One-Click Turbo</title>
+  <title>PerfScope</title>
   <style nonce="${params.nonce}">
     ${renderWebviewStyles('sidebar')}
     .score-meter-fill { width: ${params.result ? clampScore(params.result.score) : 0}%; }
     .sidebar-actions { display: grid; gap: 7px; }
     .sidebar-actions .action-button { width: 100%; justify-content: flex-start; }
     .sidebar-metrics { display: grid; gap: 6px; }
-    .sidebar-metric { display: flex; justify-content: space-between; gap: 8px; padding: 7px 0; border-bottom: 1px solid var(--turbo-border); }
+    .sidebar-metric { display: flex; justify-content: space-between; gap: 8px; padding: 7px 0; border-bottom: 1px solid var(--perfscope-border); }
     .sidebar-metric:last-child { border-bottom: 0; }
   </style>
 </head>
@@ -30,7 +30,7 @@ export function renderSidebarHtml(params: {
   <main>
     <section class="launcher-shell">
       <header>
-        <h1>One-Click Turbo</h1>
+        <h1>PerfScope</h1>
       </header>
       ${params.result ? renderSummary(params.result) : renderEmptyState()}
       ${renderOperation(params.operation)}
@@ -52,7 +52,7 @@ export function renderSidebarHtml(params: {
 </html>`;
 }
 
-function renderOperation(operation?: TurboOperationSummary): string {
+function renderOperation(operation?: PerfScopeOperationSummary): string {
   if (!operation) {
     return '';
   }
@@ -67,7 +67,7 @@ function renderOperation(operation?: TurboOperationSummary): string {
 function renderEmptyState(): string {
   return `<section class="card score-hero">
   <span class="eyebrow">Ready</span>
-  <strong class="score-value">Turbo</strong>
+  <strong class="score-value">PerfScope</strong>
   <p>Run a scan to light up your performance console.</p>
   ${renderReleaseBadges()}
   <div class="score-meter" aria-hidden="true"><div class="score-meter-fill"></div></div>
@@ -76,7 +76,7 @@ function renderEmptyState(): string {
 
 function renderSummary(result: ScanResult): string {
   return `<section class="card score-hero">
-  <span class="eyebrow">Turbo Score</span>
+  <span class="eyebrow">PerfScope Score</span>
   <div class="score-line">
     <strong class="score-value">${result.score}</strong>
     <span class="score-grade">${escapeHtml(result.grade)}</span>
@@ -98,7 +98,7 @@ function renderReleaseBadges(): string {
 }
 
 function renderActions(): string {
-  return `<nav class="sidebar-actions" aria-label="Turbo commands">
+  return `<nav class="sidebar-actions" aria-label="PerfScope commands">
   <button class="action-button primary-action" type="button" data-command="runFullScan">Run Full Scan</button>
   <button class="action-button secondary" type="button" data-command="quickAudit">Quick Audit</button>
   <button class="action-button secondary" type="button" data-command="applySafeFixes">Apply Safe Fixes</button>

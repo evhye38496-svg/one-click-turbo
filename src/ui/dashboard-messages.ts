@@ -7,12 +7,12 @@ export type DashboardCommand =
   | 'openFullDashboard';
 
 const commandMap: Record<DashboardCommand, string> = {
-  runFullScan: 'turbo.runFullScan',
-  quickAudit: 'turbo.quickAudit',
-  applySafeFixes: 'turbo.applySafeFixes',
-  undoLastFix: 'turbo.undoLastFix',
-  exportReport: 'turbo.exportReport',
-  openFullDashboard: 'turbo.showDashboard'
+  runFullScan: 'perfscope.runFullScan',
+  quickAudit: 'perfscope.quickAudit',
+  applySafeFixes: 'perfscope.applySafeFixes',
+  undoLastFix: 'perfscope.undoLastFix',
+  exportReport: 'perfscope.exportReport',
+  openFullDashboard: 'perfscope.showDashboard'
 };
 
 export function resolveDashboardCommand(message: unknown): string | undefined {

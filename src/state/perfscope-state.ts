@@ -1,24 +1,24 @@
 import * as vscode from 'vscode';
 import type { ScanResult } from '../types';
 
-export type TurboOperationKind = 'scan' | 'audit' | 'fix' | 'undo' | 'export' | 'purge';
-export type TurboOperationStatus = 'success' | 'skipped' | 'failed' | 'canceled';
+export type PerfScopeOperationKind = 'scan' | 'audit' | 'fix' | 'undo' | 'export' | 'purge';
+export type PerfScopeOperationStatus = 'success' | 'skipped' | 'failed' | 'canceled';
 
-export interface TurboOperationSummary {
-  kind: TurboOperationKind;
-  status: TurboOperationStatus;
+export interface PerfScopeOperationSummary {
+  kind: PerfScopeOperationKind;
+  status: PerfScopeOperationStatus;
   message: string;
   timestamp: string;
 }
 
-export interface TurboUiState {
+export interface PerfScopeUiState {
   lastResult?: ScanResult;
-  lastOperation?: TurboOperationSummary;
+  lastOperation?: PerfScopeOperationSummary;
 }
 
-export class TurboState implements vscode.Disposable {
-  private readonly changeEmitter = new vscode.EventEmitter<TurboUiState>();
-  private snapshot: TurboUiState = {};
+export class PerfScopeState implements vscode.Disposable {
+  private readonly changeEmitter = new vscode.EventEmitter<PerfScopeUiState>();
+  private snapshot: PerfScopeUiState = {};
 
   readonly onDidChange = this.changeEmitter.event;
 
@@ -26,7 +26,7 @@ export class TurboState implements vscode.Disposable {
     return this.snapshot.lastResult;
   }
 
-  getSnapshot(): TurboUiState {
+  getSnapshot(): PerfScopeUiState {
     return this.snapshot;
   }
 
@@ -51,7 +51,7 @@ export class TurboState implements vscode.Disposable {
     this.changeEmitter.fire(this.snapshot);
   }
 
-  setLastOperation(operation: Omit<TurboOperationSummary, 'timestamp'>): void {
+  setLastOperation(operation: Omit<PerfScopeOperationSummary, 'timestamp'>): void {
     this.snapshot = {
       ...this.snapshot,
       lastOperation: {

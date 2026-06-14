@@ -1,17 +1,17 @@
-# One-Click Turbo Growth Playbook
+# PerfScope Growth Playbook
 
-This playbook is a practical launch and growth checklist for One-Click Turbo. It is written for a first-time open-source maintainer and focuses on sustainable Marketplace installs and GitHub stars.
+This playbook is a practical launch and growth checklist for PerfScope. It is written for a first-time open-source maintainer and focuses on sustainable Marketplace installs and GitHub stars.
 
 ## Positioning
 
 Use one consistent sentence everywhere:
 
-> One-Click Turbo is a 30-second VS Code performance health check.
+> PerfScope is a 30-second VS Code performance health check.
 
 Core promise:
 
 - Scan installed extensions, activation signals, workspace settings, and memory hints.
-- Give a clear 0-100 Turbo Score.
+- Give a clear 0-100 PerfScope Score.
 - Apply only preview-first safe workspace fixes.
 - Stay fully offline with no telemetry.
 
@@ -33,7 +33,7 @@ Avoid claims that cannot be proven:
 - `npm run compile` passes.
 - `npm test` passes.
 - `npm run test:vscode` passes.
-- `npm run package:vsix` creates `dist/one-click-turbo-1.0.0.vsix`.
+- `npm run package:vsix` creates `dist/perfscope-1.0.0.vsix`.
 - A clean VS Code profile can install and run the VSIX.
 
 ## GitHub Repository Setup
@@ -47,7 +47,7 @@ A 30-second VS Code performance health scanner: audit extensions, score your set
 Website:
 
 ```text
-https://marketplace.visualstudio.com/items?itemName=Evhye.one-click-turbo
+https://marketplace.visualstudio.com/items?itemName=Evhye.perfscope
 ```
 
 Topics:
@@ -72,7 +72,7 @@ extension-manager
 Discussions categories to enable:
 
 - Ideas
-- Show your Turbo Score
+- Show your PerfScope Score
 - Help
 
 Suggested labels:
@@ -92,7 +92,7 @@ Minimum asset set:
 
 - Custom 1280x640 PNG: upload to GitHub Social Preview.
 - `marketplace-hero.png`: Activity Bar and Sidebar overview.
-- `dashboard-score.png`: full Dashboard with Turbo Score.
+- `dashboard-score.png`: full Dashboard with PerfScope Score.
 - `safe-fix-preview.png`: Apply Safe Fixes preview.
 - `markdown-report.png`: exported Markdown report.
 - `quick-audit.png`: extension audit view.
@@ -109,9 +109,9 @@ GIF script:
 
 ```text
 1. Open VS Code.
-2. Click the One-Click Turbo Activity Bar icon.
+2. Click the PerfScope Activity Bar icon.
 3. Click Run Full Scan.
-4. Show the Turbo Score.
+4. Show the PerfScope Score.
 5. Click Quick Audit.
 6. Open the full Dashboard.
 7. Show Export Report.
@@ -126,7 +126,7 @@ GIF script:
 - Confirm badges do not show broken state.
 - Confirm the icon looks good at small size.
 - Create GitHub release `v1.0.0`.
-- Attach `dist/one-click-turbo-1.0.0.vsix`.
+- Attach `dist/perfscope-1.0.0.vsix`.
 - Post the launch announcement.
 - Save baseline metrics.
 
@@ -208,7 +208,7 @@ Invest in shareability:
 
 - Make exported reports clear.
 - Add a future user-triggered `Copy Summary` command.
-- Encourage users to share Turbo Score screenshots.
+- Encourage users to share PerfScope Score screenshots.
 
 Invest in discoverability:
 
